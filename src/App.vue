@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+
+    <HelloWorld v-bind:datas="datas"/>
   </div>
 </template>
 
@@ -12,6 +12,23 @@ export default {
   name: 'App',
   components: {
     HelloWorld
+  },
+  data(){
+    return {datas: []}
+  },
+  mounted(){
+    fetch(`https://covid-19-ao.herokuapp.com/api/general`, {
+        method: 'get',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+
+    }).then((response) => response.json())
+        .then((res) => {
+          this.datas = res.data
+        }).catch((error) => {
+            console.error(error)
+    });
   }
 }
 </script>
