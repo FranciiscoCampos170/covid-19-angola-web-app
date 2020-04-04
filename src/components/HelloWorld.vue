@@ -22,7 +22,7 @@
       Confirmados: {{ datas['confirmed'] }}
     </div>
     <div class="col-sm">
-      Casos Suspeitos: {{ datas['suspects'] }}
+      Casos Suspeitos: {{ datas['suspects'] }}  ssss
     </div>
   </div>
 </div>
